@@ -18,9 +18,16 @@ Currently only ROMs without DSP or SA1 work correctly.
 Run the following commands to build and program:
 
     cd ulx3s/scripts
-    export PLUGIN_DIR=/path/to/ghdl-yosys-plugin
-    bash build.sh
-    fujprog-v42-linux-x64 snes.bit
+    make PLUGIN_DIR=/path/to/ghdl-yosys-plugin
+    make
+    make prog
+
+or run the following commands to build and program if yosys is built statically and you have different baord size:
+
+    cd ulx3s/scripts
+    make YOSYS_GHDL_PLUGIN= SIZE=12
+    make
+    make prog
 
 Set DIP switch 0 to select PAL or NTSC, and use DIP switches 3..1 to select the ROM starting
 offset in flash. Connect an HDMI monitor or TV capable of 640x480 to the ULX3S.
